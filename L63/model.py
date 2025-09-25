@@ -107,7 +107,7 @@ class ProjectedMLP(nn.Module):
         L_diag = torch.exp(self.V.log_diag_L)  # (d,)
         return torch.diag(1.0 / L_diag)        # (d, d)
 
-    def discrete_project(self, w_in, w_out, smooth_choice=True, scale_level_set=0.999):
+    def discrete_project(self, w_in, w_out, smooth_choice=True, scale_level_set=0.99):
         """
         Discrete projection onto (w - x0)^T Q (w - x0) <= b,
         with b = V(w_in) + ReLU(-V(w_in) + c^2), then scaled.
